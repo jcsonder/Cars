@@ -1,9 +1,6 @@
-﻿using Cars;
+﻿using Cars.Domain;
 using Cars.Persistence;
 using Cars.Persistence.Helper;
-using Cars.Domain;
-using Cars.DomainModel;
-using Cars.Persistence;
 using System;
 using System.Collections.Generic;
 using System.Reactive.Linq;

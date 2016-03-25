@@ -13,30 +13,11 @@ namespace Cars.Persistence
         {
         }
 
-        public Task CreateDummyDataAsync()
+        public async Task CreateDummyDataAsync()
         {
-            List<Task> tasks = new List<Task>();
-
-            tasks.Add(Task.Factory.StartNew(() =>
-            {
-                Car car = new SportCar("Porsche", "356", "silver");
-                base.CreateAsync(car);
-                ////Task.Delay(2000).Wait();
-            }));
-
-            tasks.Add(Task.Factory.StartNew(() =>
-            {
-                Car car = new SportCar("VW", "Beetle", "purple");
-                CreateAsync(car);
-            }));
-
-            tasks.Add(Task.Factory.StartNew(() =>
-            {
-                Car truck = new Truck("Ford", "F-350", "blue");
-                CreateAsync(truck);
-            }));
-
-            return Task.WhenAll(tasks);
+            await base.CreateAsync(new SportCar("Porsche", "356", "silver"));
+            await base.CreateAsync(new SportCar("VW", "Beetle", "purple"));
+            await base.CreateAsync(new Truck("Ford", "F-350", "blue"));
         }
     }
 }

@@ -10,6 +10,7 @@ namespace Cars.Persistence
     public class AsyncRepository<T> : IAsyncRepository<T> where T : IEntity
     {
         private UnitOfWork _unitOfWork;
+
         public AsyncRepository(IUnitOfWork unitOfWork)
         {
             _unitOfWork = (UnitOfWork)unitOfWork;
@@ -22,24 +23,25 @@ namespace Cars.Persistence
             return Session.Query<T>();
         }
 
-        public Task<T> GetByIdAsync(long id)
+        public async Task<T> GetByIdAsync(long id)
         {
-            return Task.Factory.StartNew(() => Session.Get<T>(id));
+            // todo: return await ???
+            return await Task.Factory.StartNew(() => Session.Get<T>(id));
         }
 
-        public Task CreateAsync(T entity)
+        public async Task CreateAsync(T entity)
         {
-            return Task.Factory.StartNew(() => Session.Save(entity));
+            await Task.Factory.StartNew(() => Session.Save(entity));
         }
 
-        public Task UpdateAsync(T entity)
+        public async Task UpdateAsync(T entity)
         {
-            return Task.Factory.StartNew(() => Session.Update(entity));
+            await Task.Factory.StartNew(() => Session.Update(entity));
         }
 
-        public Task DeleteAsync(long id)
+        public async Task DeleteAsync(long id)
         {
-            return Task.Factory.StartNew(() => Session.Delete(Session.Load<T>(id)));
+            await Task.Factory.StartNew(() => Session.Delete(Session.Load<T>(id)));
         }
     }
 }
