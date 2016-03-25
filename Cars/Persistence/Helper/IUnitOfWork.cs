@@ -1,5 +1,4 @@
-﻿
-namespace CarCollector.Persistence.Helper
+﻿namespace Cars.Persistence.Helper
 {
     public interface IUnitOfWork
     {

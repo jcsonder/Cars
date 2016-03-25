@@ -6,7 +6,7 @@ using NHibernate.Cfg;
 using NHibernate.Tool.hbm2ddl;
 using System.IO;
 
-namespace CarCollector.Persistence.Helper
+namespace Cars.Persistence.Helper
 {
     public class UnitOfWork : IUnitOfWork
     {

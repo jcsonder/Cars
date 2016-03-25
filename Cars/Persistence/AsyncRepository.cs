@@ -1,13 +1,13 @@
-﻿using CarCollector.Persistence.Helper;
-using FluentNHibernate.Data;
+﻿using Cars.Domain;
+using Cars.Persistence.Helper;
 using NHibernate;
 using NHibernate.Linq;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace CarCollector.Persistence
+namespace Cars.Persistence
 {
-    public class AsyncRepository<T> : IAsyncRepository<T> where T : Entity
+    public class AsyncRepository<T> : IAsyncRepository<T> where T : IEntity
     {
         private UnitOfWork _unitOfWork;
         public AsyncRepository(IUnitOfWork unitOfWork)

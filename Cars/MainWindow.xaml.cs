@@ -1,6 +1,7 @@
-﻿using CarCollector;
-using CarCollector.Persistence;
-using CarCollector.Persistence.Helper;
+﻿using Cars;
+using Cars.Persistence;
+using Cars.Persistence.Helper;
+using Cars.Domain;
 using Cars.DomainModel;
 using Cars.Persistence;
 using System;
@@ -14,7 +15,7 @@ namespace Cars
     {
         // todo: Reduce code behind!
         private readonly IUnitOfWork _unitOfWork;
-        private readonly IAsyncRepository<Car> _carRepository;
+        private readonly IAsyncRepository<ICar> _carRepository;
         private readonly ICarService _carService;
         private readonly List<IDisposable> _disposables;
 
@@ -39,7 +40,7 @@ namespace Cars
             label.Content = "buttonGetCars clicked";
             listboxCars.Items.Clear();
 
-            IObservable<Car> dataObservable = _carService.GetAll();
+            IObservable<ICar> dataObservable = _carService.GetAll();
             // todo: dispose the disposable
 
             _disposables.Add(dataObservable

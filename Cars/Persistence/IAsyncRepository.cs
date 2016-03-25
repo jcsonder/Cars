@@ -1,10 +1,11 @@
-﻿using FluentNHibernate.Data;
+﻿using Cars.Domain;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace CarCollector.Persistence
+namespace Cars.Persistence
 {
-    public interface IAsyncRepository<T> where T : Entity
+    public interface IAsyncRepository<T> 
+        where T : IEntity
     {
         IQueryable<T> GetAll();
         Task<T> GetByIdAsync(long id);

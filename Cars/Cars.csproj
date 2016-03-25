@@ -7,8 +7,8 @@
     <ProjectGuid>{21275CCA-CD47-4FA9-A29B-3F435206D874}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CarCollector</RootNamespace>
-    <AssemblyName>CarCollector</AssemblyName>
+    <RootNamespace>Cars</RootNamespace>
+    <AssemblyName>Cars</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -102,12 +102,13 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Domain\IEntity.cs" />
     <Compile Include="ICarService.cs" />
     <Compile Include="Persistence\CarRepository.cs" />
     <Compile Include="DomainModel\Car.cs" />
     <Compile Include="DomainModel\SportCar.cs" />
     <Compile Include="DomainModel\Truck.cs" />
-    <Compile Include="DomainService.cs" />
+    <Compile Include="CarService.cs" />
     <Compile Include="Domain\ICar.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

@@ -1,12 +1,12 @@
-﻿using CarCollector.Persistence;
-using CarCollector.Persistence.Helper;
+﻿using Cars.Domain;
 using Cars.DomainModel;
+using Cars.Persistence.Helper;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Cars.Persistence
 {
-    public class CarRepository : AsyncRepository<Car>
+    public class CarRepository : AsyncRepository<ICar>
     {
         public CarRepository(IUnitOfWork unitOfWork)
             :base(unitOfWork)

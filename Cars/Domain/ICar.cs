@@ -1,8 +1,7 @@
 ﻿namespace Cars.Domain
 {
-    public interface ICar
+    public interface ICar : IEntity
     {
-        long Id { get; }
         string Name { get; }
         string Model { get; }
         string Color { get; }
