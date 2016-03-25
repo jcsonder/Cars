@@ -7,8 +7,15 @@
         mc:Ignorable="d"
         Title="Cars" Height="350" Width="525">
     <Grid>
-        <Button x:Name="button1" Content="Task" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="497" Click="button1_Click"/>
-        <Button x:Name="button2" Content="Observable" HorizontalAlignment="Left" Margin="10,45,0,0" VerticalAlignment="Top" Width="497" Click="button2_Click"/>
-        <Label x:Name="label" Content="Label" HorizontalAlignment="Left" Margin="10,80,0,0" VerticalAlignment="Top" Width="497"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Button Grid.Row="0" x:Name="buttonCreateCars" Content="CreateCars" Margin="3" Click="buttonCreateCars_Click"/>
+        <Button Grid.Row="1" x:Name="buttonGetCars" Content="GetCars" Margin="3" Click="buttonGetCars_Click"/>
+        <Label Grid.Row="2" x:Name="label" Content="Label" Margin="3" />
+        <ListBox Grid.Row="3" x:Name="listboxCars" Margin="3" />
     </Grid>
 </Window>

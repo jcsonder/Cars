@@ -1,41 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reactive.Disposables;
-using System.Reactive.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
+﻿using Cars.DomainModel;
 using Cars.Persistence;
+using System;
+using System.Threading.Tasks;
 
 namespace Cars
 {
     // todo: Create appropriate namespace
     public class DomainService
     {
+        private readonly DataRepository _dataRepository;
+
         public DomainService()
         {
             _dataRepository = new DataRepository();
         }
 
-        private readonly DataRepository _dataRepository;
-
-        public async Task<string> GetDataAsync()
+        public async Task CreateCarsAsync()
         {
-            string data = await _dataRepository.RetrieveDataAsync().ConfigureAwait(false);
-            data = ComputeData(data);
-            return data;
+            await _dataRepository.CreateCarsAsync().ConfigureAwait(false);
         }
 
-        private string ComputeData(string data)
+        public IObservable<Car> GetCars()
         {
-            Task.Delay(2000).Wait();
-            return data.ToUpper();
-        }
-
-        public IObservable<long> LoadDataAsync()
-        {
-            return _dataRepository.LoadDataAsync();
+            return _dataRepository.GetCars();
         }
     }
 }

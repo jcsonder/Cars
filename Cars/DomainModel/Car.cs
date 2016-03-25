@@ -28,5 +28,10 @@ namespace Cars.DomainModel
         public virtual string Color { get { return _color; } }
 
         public abstract string Drive();
+
+        public override string ToString()
+        {
+            return string.Format("{0}-{1}-{2}-{3}", Id, Name, Model, Color);
+        }
     }
 }
