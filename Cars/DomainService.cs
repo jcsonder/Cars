@@ -1,28 +1,31 @@
-﻿using Cars.DomainModel;
+﻿using CarCollector;
+using CarCollector.Persistence;
+using Cars.DomainModel;
 using Cars.Persistence;
 using System;
+using System.Reactive.Linq;
 using System.Threading.Tasks;
 
 namespace Cars
 {
     // todo: Create appropriate namespace
-    public class DomainService
+    public class CarService : ICarService
     {
-        private readonly DataRepository _dataRepository;
+        private readonly IAsyncRepository<Car> _carRepository;
 
-        public DomainService()
+        public CarService(IAsyncRepository<Car> carRepository)
         {
-            _dataRepository = new DataRepository();
+            _carRepository = carRepository;
         }
 
-        public async Task CreateCarsAsync()
+        public async Task CreateDummyDataAsync()
         {
-            await _dataRepository.CreateCarsAsync().ConfigureAwait(false);
+            await ((CarRepository)_carRepository).CreateDummyDataAsync().ConfigureAwait(false);
         }
 
-        public IObservable<Car> GetCars()
+        public IObservable<Car> GetAll()
         {
-            return _dataRepository.GetCars();
+            return _carRepository.GetAll().ToObservable<Car>();
         }
     }
 }

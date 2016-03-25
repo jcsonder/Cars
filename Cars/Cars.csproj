@@ -102,7 +102,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Persistence\DataRepository.cs" />
+    <Compile Include="ICarService.cs" />
+    <Compile Include="Persistence\CarRepository.cs" />
     <Compile Include="DomainModel\Car.cs" />
     <Compile Include="DomainModel\SportCar.cs" />
     <Compile Include="DomainModel\Truck.cs" />
@@ -114,10 +115,13 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Persistence\CarMap.cs" />
-    <Compile Include="Persistence\Helper\NHibernateHelper.cs" />
-    <Compile Include="Persistence\SportCarMap.cs" />
-    <Compile Include="Persistence\TruckMap.cs" />
+    <Compile Include="Persistence\Helper\IUnitOfWork.cs" />
+    <Compile Include="Persistence\Helper\UnitOfWork.cs" />
+    <Compile Include="Persistence\Map\CarMap.cs" />
+    <Compile Include="Persistence\IAsyncRepository.cs" />
+    <Compile Include="Persistence\Map\SportCarMap.cs" />
+    <Compile Include="Persistence\Map\TruckMap.cs" />
+    <Compile Include="Persistence\AsyncRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

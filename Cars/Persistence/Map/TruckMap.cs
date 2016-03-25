@@ -1,7 +1,7 @@
 ﻿using Cars.DomainModel;
 using FluentNHibernate.Mapping;
 
-namespace Cars.Persistence
+namespace Cars.Persistence.Map
 {
     public class TruckMap : SubclassMap<Truck>
     {
