@@ -1,21 +1,9 @@
 ﻿<Window x:Class="Cars.MainWindow"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Cars"
-        mc:Ignorable="d"
+        xmlns:Controls="clr-namespace:Cars.Controls"
         Title="Cars" Height="350" Width="525">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        <Button Grid.Row="0" x:Name="buttonCreateCars" Content="CreateCars" Margin="3" Click="buttonCreateCars_Click"/>
-        <Button Grid.Row="1" x:Name="buttonGetCars" Content="GetCars" Margin="3" Click="buttonGetCars_Click"/>
-        <Label Grid.Row="2" x:Name="label" Content="Label" Margin="3" />
-        <ListBox Grid.Row="3" x:Name="listboxCars" Margin="3" />
+        <Controls:CarsView/>
     </Grid>
 </Window>
