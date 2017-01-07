@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Cars
 {
-    interface ICarService
+    public interface ICarService
     {
         void CreateDummyData();
 

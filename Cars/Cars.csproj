@@ -56,6 +56,10 @@
       <HintPath>..\packages\NHibernate.4.1.0.4000\lib\net40\NHibernate.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
@@ -116,8 +120,11 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="CarsModule.cs" />
     <Compile Include="Controls\BaseViewModel.cs" />
     <Compile Include="Controls\CarsViewModel.cs" />
+    <Compile Include="Controls\ICarsViewModel.cs" />
+    <Compile Include="Controls\NinjectServiceLocator.cs" />
     <Compile Include="Controls\RelayCommand.cs" />
     <Compile Include="Domain\IEntity.cs" />
     <Compile Include="ICarService.cs" />
@@ -140,10 +147,10 @@
     <Compile Include="Persistence\Helper\IUnitOfWork.cs" />
     <Compile Include="Persistence\Helper\UnitOfWork.cs" />
     <Compile Include="Persistence\Map\CarMap.cs" />
-    <Compile Include="Persistence\IAsyncRepository.cs" />
+    <Compile Include="Persistence\IRepository.cs" />
     <Compile Include="Persistence\Map\SportCarMap.cs" />
     <Compile Include="Persistence\Map\TruckMap.cs" />
-    <Compile Include="Persistence\AsyncRepository.cs" />
+    <Compile Include="Persistence\Repository.cs" />
     <Compile Include="Controls\CarsView.xaml.cs">
       <DependentUpon>CarsView.xaml</DependentUpon>
     </Compile>

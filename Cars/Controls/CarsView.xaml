@@ -2,11 +2,12 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:viewmodel="clr-namespace:Cars.Controls">
-    <UserControl.DataContext>
-        <viewmodel:CarsViewModel />
-    </UserControl.DataContext>    
-    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+             xmlns:ioc="clr-namespace:Cars.Controls">
+    <UserControl.Resources>
+        <ioc:NinjectServiceLocator x:Key="ServiceLocator" />
+    </UserControl.Resources>
+    <Grid DataContext="{Binding Path=CarsViewModel, Source={StaticResource ServiceLocator}}"
+        HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />

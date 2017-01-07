@@ -1,18 +1,14 @@
 ﻿using Cars.Domain;
-using Cars.Persistence;
-using Cars.Persistence.Helper;
 using Remotion.Linq.Collections;
 using System.Linq;
 using System.Windows.Input;
 
 namespace Cars.Controls
 {
-    public class CarsViewModel : BaseViewModel
+    public class CarsViewModel : BaseViewModel, ICarsViewModel
     {
         // todo: Make UI responsive*
 
-        private readonly IUnitOfWork _unitOfWork;
-        private readonly IRepository<ICar> _carRepository;
         private readonly ICarService _carService;
         private readonly ObservableCollection<ICar> _cars;
 
@@ -21,12 +17,9 @@ namespace Cars.Controls
         private ICommand _doLoadCars;
         private ICommand _doCreateCars;
 
-        public CarsViewModel()
+        public CarsViewModel(ICarService carService)
         {
-            // todo: Introduce DI
-            _unitOfWork = new UnitOfWork();
-            _carRepository = new CarRepository(_unitOfWork);
-            _carService = new CarService(_carRepository);
+            _carService = carService;
             
             _cars = new ObservableCollection<ICar>();
             Status = "Ready";
