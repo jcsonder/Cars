@@ -1,13 +1,12 @@
 ﻿using Cars.Domain;
-using System;
-using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace Cars
 {
     interface ICarService
     {
-        Task CreateDummyDataAsync();
+        void CreateDummyData();
 
-        IObservable<ICar> GetAll();
+        IList<ICar> GetAll();
     }
 }
