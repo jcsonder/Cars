@@ -102,6 +102,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Controls\BaseViewModel.cs" />
+    <Compile Include="Controls\CarsViewModel.cs" />
+    <Compile Include="Controls\RelayCommand.cs" />
     <Compile Include="Domain\IEntity.cs" />
     <Compile Include="ICarService.cs" />
     <Compile Include="Persistence\CarRepository.cs" />
