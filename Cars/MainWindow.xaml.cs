@@ -2,7 +2,7 @@
 using Cars.Persistence;
 using Cars.Persistence.Helper;
 using System;
-using System.Collections.Generic;
+using System.Reactive.Disposables;
 using System.Reactive.Linq;
 using System.Windows;
 
@@ -14,14 +14,14 @@ namespace Cars
         private readonly IUnitOfWork _unitOfWork;
         private readonly IAsyncRepository<ICar> _carRepository;
         private readonly ICarService _carService;
-        private readonly List<IDisposable> _disposables;
+        private readonly SerialDisposable _serialDisposable;
 
         public MainWindow()
         {
             _unitOfWork = new UnitOfWork();
             _carRepository = new CarRepository(_unitOfWork);
             _carService = new CarService(_carRepository);
-            _disposables = new List<IDisposable>();
+            _serialDisposable = new SerialDisposable();
             InitializeComponent();
         }
 
@@ -40,17 +40,17 @@ namespace Cars
             IObservable<ICar> dataObservable = _carService.GetAll();
             // todo: dispose the disposable
 
-            _disposables.Add(dataObservable
+            _serialDisposable.Disposable = dataObservable
                 .ObserveOnDispatcher()
                 .Subscribe(
                     (d) => listboxCars.Items.Add(d),
                     (ex) => label.Content = string.Format("OnException: {0}", ex.Message),
-                    () => label.Content = "OnCompleted"));
+                    () => label.Content = "OnCompleted");
         }
 
         protected override void OnClosed(EventArgs e)
         {
-            _disposables.ForEach(d => d.Dispose());
+            _serialDisposable.Dispose();
         }
     }
 }
