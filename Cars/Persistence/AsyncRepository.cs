@@ -2,45 +2,46 @@
 using Cars.Persistence.Helper;
 using NHibernate;
 using NHibernate.Linq;
-using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Cars.Persistence
 {
-    public class Repository<T> : IRepository<T> where T : IEntity
+    public class AsyncRepository<T> : IAsyncRepository<T> where T : IEntity
     {
         private UnitOfWork _unitOfWork;
 
-        public Repository(IUnitOfWork unitOfWork)
+        public AsyncRepository(IUnitOfWork unitOfWork)
         {
             _unitOfWork = (UnitOfWork)unitOfWork;
         }
 
         protected ISession Session { get { return _unitOfWork.Session; } }
 
-        public IList<T> GetAll()
+        public IQueryable<T> GetAll()
         {
-            return Session.Query<T>().ToList<T>();
+            return Session.Query<T>();
         }
 
-        public T GetById(long id)
+        public async Task<T> GetByIdAsync(long id)
         {
-            return Session.Get<T>(id);
+            // todo: return await ???
+            return await Task.Factory.StartNew(() => Session.Get<T>(id));
         }
 
-        public void Create(T entity)
+        public async Task CreateAsync(T entity)
         {
-            Session.Save(entity);
+            await Task.Factory.StartNew(() => Session.Save(entity));
         }
 
-        public void Update(T entity)
+        public async Task UpdateAsync(T entity)
         {
-            Session.Update(entity);
+            await Task.Factory.StartNew(() => Session.Update(entity));
         }
 
-        public void Delete(long id)
+        public async Task DeleteAsync(long id)
         {
-            Session.Delete(Session.Load<T>(id));
+            await Task.Factory.StartNew(() => Session.Delete(Session.Load<T>(id)));
         }
     }
 }

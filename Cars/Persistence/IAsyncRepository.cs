@@ -1,16 +1,16 @@
 ﻿using Cars.Domain;
-using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Cars.Persistence
 {
-    public interface IRepository<T> 
+    public interface IAsyncRepository<T> 
         where T : IEntity
     {
-        IList<T> GetAll();
-        T GetById(long id);
-        void Create(T entity);
-        void Update(T entity);
-        void Delete(long id);
+        IQueryable<T> GetAll();
+        Task<T> GetByIdAsync(long id);
+        Task CreateAsync(T entity);
+        Task UpdateAsync(T entity);
+        Task DeleteAsync(long id);
     }
 }
