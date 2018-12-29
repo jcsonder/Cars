@@ -3,4 +3,4 @@
 ## Unreleased
 
 Enhancements:
-- Added CHANGELOG.md (@jcsonder, [#404](https://github.com/jcsonder/Cars/issues/404))
+- Added CHANGELOG.md (@jcsonder, [#1](https://github.com/jcsonder/Cars/issues/1))
